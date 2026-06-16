@@ -12,7 +12,7 @@ export interface Project {
   building: string | string[];
   potentialPartners: string[];
   featured?: boolean;
-  externalUrl: string;
+  website?: string;
 }
 
 export const projectStages: ProjectStage[] = [
@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "Full-stack service operations application with request pipelines, status tracking, and institutional review workflows.",
     potentialPartners: ["City digital teams", "Public service departments", "GovTech programs"],
     featured: true,
-    externalUrl: "/login",
+    website: "https://phaarvai-website-blue.vercel.app/login",
   },
   {
     id: "resilience-resource-optimizer",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
       "Risk analysis, resource planning, reporting, and transparency modules for institutional climate governance.",
     potentialPartners: ["Local governments", "Climate agencies", "Infrastructure operators"],
     featured: true,
-    externalUrl: "/projects/resilience-resource-optimizer",
+    website: "https://phaarvai-website-blue.vercel.app/projects/resilience-resource-optimizer",
   },
   {
     id: "x-y-manufacturing-platform",
@@ -70,7 +70,7 @@ export const projects: Project[] = [
       "Integrated manufacturing assistant, marketplace discovery, booking workflows, and provider operations.",
     potentialPartners: ["Manufacturers", "Industrial networks", "Innovation hubs"],
     featured: true,
-    externalUrl: "/projects/x-y",
+    website: "https://x-y-app-nextjs-app.vercel.app",
   },
   {
     id: "ai-for-cities",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       "AI assistant and operations dashboard for civic issue intake, routing, and service gap analysis.",
     potentialPartners: ["City governments", "Urban innovation labs", "GovTech programs"],
     featured: true,
-    externalUrl: "/projects/government-services-ai",
+    website: "https://phaarvai-website-blue.vercel.app/projects/government-services-ai",
   },
   {
     id: "climate-intelligence-platform",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       "Platform aggregating climate risk signals, adaptation indicators, and operational reporting views.",
     potentialPartners: ["Environmental agencies", "Climate programs", "Research institutions"],
     featured: true,
-    externalUrl: "/projects/resilience-resource-optimizer",
+    website: "https://phaarvai-website-blue.vercel.app/projects/resilience-resource-optimizer",
   },
   {
     id: "civic-service-navigator",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       "Conversational navigator with structured service pathways, eligibility guidance, and accessibility-first design.",
     potentialPartners: ["Government agencies", "Civic coalitions", "Public institutions"],
     featured: false,
-    externalUrl: "/login",
+    website: "https://phaarvai-website-blue.vercel.app/login",
   },
   {
     id: "public-impact-knowledge-graph",
@@ -134,7 +134,6 @@ export const projects: Project[] = [
       "Knowledge layer linking entities, program flows, and outcomes into queryable operational intelligence.",
     potentialPartners: ["Research universities", "Think tanks", "Institutional networks"],
     featured: false,
-    externalUrl: "/projects",
   },
   {
     id: "institutional-readiness-assistant",
@@ -150,7 +149,6 @@ export const projects: Project[] = [
       "Assistant that maps program requirements, surfaces operational fit, and structures readiness workflows.",
     potentialPartners: ["Public agencies", "Development programs", "Institutional operators"],
     featured: false,
-    externalUrl: "/projects",
   },
   {
     id: "policy-intelligence-assistant",
@@ -166,7 +164,6 @@ export const projects: Project[] = [
       "Research assistant aggregating policy documents, surfacing evidence, and supporting institutional briefings.",
     potentialPartners: ["Think tanks", "Research institutions", "Public agencies"],
     featured: false,
-    externalUrl: "/projects",
   },
 ];
 

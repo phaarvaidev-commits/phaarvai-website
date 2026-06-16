@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { HeroVisualLight } from "@/components/HeroVisualLight";
 
 interface HeroSectionProps {
   headline: string;
@@ -13,7 +13,6 @@ interface HeroSectionProps {
   ctaSecondary?: { label: string; href: string };
   ctaTertiary?: { label: string; href: string };
   badges?: string[];
-  image?: { src: string; alt: string };
 }
 
 export function HeroSection({
@@ -23,10 +22,6 @@ export function HeroSection({
   ctaSecondary,
   ctaTertiary,
   badges,
-  image = {
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    alt: "AI infrastructure and operational technology systems",
-  },
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-[88vh] flex items-center pt-32 pb-20 overflow-hidden bg-background">
@@ -115,18 +110,7 @@ export function HeroSection({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border shadow-xl bg-muted">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-background/40 via-transparent to-primary/10 pointer-events-none" />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(45,120,110,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(45,120,110,0.06)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" aria-hidden />
-            </div>
+            <HeroVisualLight />
           </motion.div>
         </div>
       </div>
