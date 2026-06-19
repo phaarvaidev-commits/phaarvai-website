@@ -7,6 +7,10 @@ import { siteContent } from "@/content/site";
 import { PageHeader } from "@/components/PageHeader";
 import { CTASection } from "@/components/CTASection";
 import { PageSEO } from "@/components/PageSEO";
+import {
+  InfrastructureMeshVisual,
+  OperationalDashboardVisual,
+} from "@/components/infrastructure";
 
 const fadeIn = {
   initial: { opacity: 0, y: 12 },
@@ -33,6 +37,14 @@ export default function Capabilities() {
             title={capabilitiesPage.title}
             description={capabilitiesPage.subtitle}
           />
+
+          <motion.div
+            {...fadeIn}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-16"
+          >
+            <InfrastructureMeshVisual className="min-h-[260px]" />
+            <OperationalDashboardVisual className="min-h-[260px]" />
+          </motion.div>
 
           <div className="space-y-12">
             {capabilityAreas.map((cap, idx) => {

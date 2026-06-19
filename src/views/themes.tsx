@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CTASection } from "@/components/CTASection";
 import { PageSEO } from "@/components/PageSEO";
+import { InfrastructureMeshVisual, SystemFlowVisual } from "@/components/infrastructure";
 import { siteContent } from "@/content/site";
 
 const fadeIn = {
@@ -33,6 +34,27 @@ export default function Themes() {
             title="Applied AI across institutional environments"
             description="Technology systems for complex real-world environments — exploring intelligent systems across high-impact operational domains."
           />
+
+          <motion.div {...fadeIn} className="mb-16">
+            <SystemFlowVisual compact />
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+            <motion.div {...fadeIn} className="lg:col-span-2">
+              <InfrastructureMeshVisual className="min-h-[280px]" />
+            </motion.div>
+            <motion.div
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: 0.08 }}
+              className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-center"
+            >
+              <p className="label-mono mb-3">Domain coverage</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Applied AI systems spanning data pipelines, institutional platforms, secure deployment,
+                and operational intelligence across six high-impact domains.
+              </p>
+            </motion.div>
+          </div>
 
           <div className="space-y-20">
             {themes.map((theme, themeIdx) => {

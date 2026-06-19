@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "Full-stack service operations application with request pipelines, status tracking, and institutional review workflows.",
     potentialPartners: ["City digital teams", "Public service departments", "GovTech programs"],
     featured: true,
-    website: "https://phaarvai-website-blue.vercel.app/login",
+    website: "/projects/government-services-ai",
   },
   {
     id: "resilience-resource-optimizer",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
       "Risk analysis, resource planning, reporting, and transparency modules for institutional climate governance.",
     potentialPartners: ["Local governments", "Climate agencies", "Infrastructure operators"],
     featured: true,
-    website: "https://phaarvai-website-blue.vercel.app/projects/resilience-resource-optimizer",
+    website: "/projects/resilience-resource-optimizer",
   },
   {
     id: "x-y-manufacturing-platform",
@@ -70,7 +70,7 @@ export const projects: Project[] = [
       "Integrated manufacturing assistant, marketplace discovery, booking workflows, and provider operations.",
     potentialPartners: ["Manufacturers", "Industrial networks", "Innovation hubs"],
     featured: true,
-    website: "https://x-y-app-nextjs-app.vercel.app",
+    website: "/projects/x-y",
   },
   {
     id: "ai-for-cities",
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       "AI assistant and operations dashboard for civic issue intake, routing, and service gap analysis.",
     potentialPartners: ["City governments", "Urban innovation labs", "GovTech programs"],
     featured: true,
-    website: "https://phaarvai-website-blue.vercel.app/projects/government-services-ai",
+    website: "/login",
   },
   {
     id: "climate-intelligence-platform",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       "Platform aggregating climate risk signals, adaptation indicators, and operational reporting views.",
     potentialPartners: ["Environmental agencies", "Climate programs", "Research institutions"],
     featured: true,
-    website: "https://phaarvai-website-blue.vercel.app/projects/resilience-resource-optimizer",
+    website: "/projects/resilience-resource-optimizer",
   },
   {
     id: "civic-service-navigator",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       "Conversational navigator with structured service pathways, eligibility guidance, and accessibility-first design.",
     potentialPartners: ["Government agencies", "Civic coalitions", "Public institutions"],
     featured: false,
-    website: "https://phaarvai-website-blue.vercel.app/login",
+    website: "/login",
   },
   {
     id: "public-impact-knowledge-graph",
@@ -166,6 +166,41 @@ export const projects: Project[] = [
     featured: false,
   },
 ];
+
+/** Slugs with a dedicated app route under `app/projects/[slug]/` */
+export const nativeProjectSlugs = [
+  "government-services-ai",
+  "resilience-resource-optimizer",
+  "x-y",
+] as const;
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((p) => p.slug === slug);
+}
+
+export function getProjectHref(slug: string) {
+  return `/projects/${slug}`;
+}
+
+/** Resolves the live demo / application URL for a project card launch action. */
+export function getProjectLaunchUrl(project: Project): string | null {
+  return project.website ?? null;
+}
+
+export function hasProjectLaunchUrl(project: Project): boolean {
+  return Boolean(project.website);
+}
+
+export function isExternalProjectUrl(url: string) {
+  return url.startsWith("http://") || url.startsWith("https://");
+}
+
+/** Absolute URL for opening demos in a new tab (internal apps resolve against site origin). */
+export function resolveProjectLaunchUrl(url: string, origin = "https://phaarvai.com"): string {
+  if (isExternalProjectUrl(url)) return url;
+  if (url.startsWith("/")) return `${origin.replace(/\/$/, "")}${url}`;
+  return url;
+}
 
 export function getProjectsByTheme(themeId: ThemeId) {
   return projects.filter((p) => p.themes.includes(themeId));

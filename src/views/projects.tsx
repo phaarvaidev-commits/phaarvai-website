@@ -7,6 +7,7 @@ import { projects, projectStages } from "@/content/projects";
 import { themes } from "@/content/themes";
 import type { ProjectStage, ThemeId } from "@/content/types";
 import { ProjectCard } from "@/components/ProjectCard";
+import { SystemFlowVisual } from "@/components/infrastructure";
 import { PageHeader } from "@/components/PageHeader";
 import { CTASection } from "@/components/CTASection";
 import { PageSEO } from "@/components/PageSEO";
@@ -51,6 +52,15 @@ export default function Projects() {
             title={projectsPage.title}
             description={projectsPage.subtitle}
           />
+
+          <motion.div
+            className="mb-10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: 0.05 }}
+          >
+            <SystemFlowVisual compact />
+          </motion.div>
 
           <motion.div
             className="mb-10 space-y-5"

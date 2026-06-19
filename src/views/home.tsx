@@ -10,6 +10,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ThemeCard } from "@/components/ThemeCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SystemsStackVisual } from "@/components/SystemsStackVisual";
+import { SystemFlowVisual } from "@/components/infrastructure";
 import { CTASection } from "@/components/CTASection";
 import { PageSEO } from "@/components/PageSEO";
 
@@ -62,6 +63,14 @@ export default function Home() {
       </section>
 
       <SystemsStackVisual />
+
+      <section className="pb-20 md:pb-28 bg-background" aria-label="AI system flow">
+        <div className="container mx-auto px-6 md:px-12">
+          <motion.div {...fadeIn}>
+            <SystemFlowVisual />
+          </motion.div>
+        </div>
+      </section>
 
       <section className="section-y bg-background" aria-label="Operational domains">
         <div className="container mx-auto px-6 md:px-12">
