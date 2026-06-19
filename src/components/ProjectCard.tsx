@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/content/projects";
@@ -7,6 +8,8 @@ import {
   formatBuilding,
   getProjectLaunchUrl,
   hasProjectLaunchUrl,
+  isExternalProjectUrl,
+  isInternalLaunchUrl,
 } from "@/content/projects";
 import { themes } from "@/content/themes";
 import type { ThemeId } from "@/content/types";
@@ -63,6 +66,8 @@ export function ProjectCard({
   const buildingItems = formatBuilding(project.building);
   const launchUrl = getProjectLaunchUrl(project);
   const isLaunchable = hasProjectLaunchUrl(project);
+  const isInternal = launchUrl ? isInternalLaunchUrl(launchUrl) : false;
+  const isExternal = launchUrl ? isExternalProjectUrl(launchUrl) : false;
 
   const card = (
     <motion.article
@@ -86,13 +91,17 @@ export function ProjectCard({
       </div>
 
       <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+        <h3 className="type-card-title group-hover:text-primary transition-colors">
           {project.title}
         </h3>
         {isLaunchable ? (
           <ArrowUpRight
             size={18}
-            className="text-primary shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className={cn(
+              "text-primary shrink-0 transition-transform",
+              isInternal && "group-hover:translate-x-0.5",
+              isExternal && "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            )}
           />
         ) : (
           <ArrowUpRight
@@ -102,7 +111,7 @@ export function ProjectCard({
         )}
       </div>
 
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-grow">
+      <p className="type-card-body mb-4 flex-grow">
         {project.description}
       </p>
 
@@ -112,7 +121,7 @@ export function ProjectCard({
       </div>
 
       {variant !== "compact" && (
-        <div className="border-t border-border pt-4 text-xs text-muted-foreground">
+        <div className="border-t border-border pt-4 text-sm text-muted-foreground">
           <p className="font-semibold text-foreground/80 mb-2">What we are building</p>
           {buildingItems.length === 1 ? (
             <p>{buildingItems[0]}</p>
@@ -130,14 +139,14 @@ export function ProjectCard({
       )}
 
       {variant === "detailed" && (
-        <p className="text-xs text-muted-foreground border-t border-border pt-4 mt-3">
+        <p className="text-sm text-muted-foreground border-t border-border pt-4 mt-3">
           <span className="font-semibold text-foreground/80">Potential partners: </span>
           {project.potentialPartners.join(" · ")}
         </p>
       )}
 
       {isLaunchable && (
-        <p className="text-xs font-semibold text-primary mt-4 pt-3 border-t border-border group-hover:underline">
+        <p className="text-sm font-semibold text-primary mt-4 pt-3 border-t border-border group-hover:underline">
           Launch system
         </p>
       )}
@@ -146,6 +155,14 @@ export function ProjectCard({
 
   if (!launchUrl) {
     return card;
+  }
+
+  if (isInternal) {
+    return (
+      <Link href={launchUrl} className="block" aria-label={`Open ${project.title}`}>
+        {card}
+      </Link>
+    );
   }
 
   return (

@@ -30,8 +30,8 @@ export function CTASection({
     <section
       className={
         isAccent
-          ? "py-20 md:py-24 relative overflow-hidden section-cta"
-          : "py-20 md:py-24 bg-muted/50 border-y border-border"
+          ? "py-14 md:py-16 relative overflow-hidden section-cta"
+          : "py-14 md:py-16 bg-muted/50 border-y border-border"
       }
     >
       {isAccent && (
@@ -48,22 +48,18 @@ export function CTASection({
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4 text-foreground">
-            {title}
-          </h2>
-          <p className="text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
-            {description}
-          </p>
+          <h2 className="type-section-title mb-4">{title}</h2>
+          <p className="type-body mb-8 max-w-xl mx-auto">{description}</p>
           <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link href={buttonHref}>
-              <Button size="lg" className="h-12 px-8 font-semibold hover-elevate gap-2 group">
+              <Button size="lg" className="h-12 px-9 text-base font-semibold hover-elevate gap-2 group">
                 {buttonLabel}
-                <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </Button>
             </Link>
             {secondaryLabel && secondaryHref && (
               <Link href={secondaryHref}>
-                <Button size="lg" variant="outline" className="h-12 px-8 font-semibold">
+                <Button size="lg" variant="outline" className="h-12 px-9 text-base font-semibold">
                   {secondaryLabel}
                 </Button>
               </Link>

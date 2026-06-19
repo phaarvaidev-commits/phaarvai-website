@@ -26,7 +26,7 @@ export function StageLabelBadge({ label, className }: StageLabelBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center text-[10px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide bg-muted text-foreground/80 border-border",
+        "inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide bg-muted text-foreground/80 border-border",
         className
       )}
     >
@@ -44,7 +44,7 @@ export function ProjectStatusBadge({ status, className }: ProjectStatusBadgeProp
   return (
     <span
       className={cn(
-        "inline-flex items-center text-[10px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
+        "inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
         statusStyles[status],
         className
       )}
@@ -58,7 +58,7 @@ export function StatusBadge({ stage, className }: { stage: ProjectStage; classNa
   return (
     <span
       className={cn(
-        "inline-flex items-center text-[10px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
+        "inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full border tracking-wide",
         stageStyles[stage],
         className
       )}
@@ -77,7 +77,7 @@ export function ThemeBadge({ label, className }: ThemeBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center text-[10px] font-medium px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground border border-border",
+        "inline-flex items-center text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground border border-border",
         className
       )}
     >

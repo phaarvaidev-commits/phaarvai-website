@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { isGsaiAppPath } from "@/projects/government-services-ai/utils/routes";
+import { isXyAppPath } from "@/projects/x-y/utils/routes";
 
 export function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const hideMarketingChrome =
     isGsaiAppPath(pathname) ||
-    pathname.startsWith("/projects/resilience-resource-optimizer") ||
-    pathname.startsWith("/projects/x-y");
+    isXyAppPath(pathname) ||
+    pathname.startsWith("/projects/resilience-resource-optimizer");
 
   if (hideMarketingChrome) {
     return <>{children}</>;

@@ -27,7 +27,7 @@ export default function Themes() {
         path="/themes"
       />
 
-      <article className="pt-28 pb-12 bg-background">
+      <article className="page-top bg-background">
         <div className="container mx-auto px-6 md:px-12">
           <PageHeader
             label="Operational Domains"
@@ -35,11 +35,11 @@ export default function Themes() {
             description="Technology systems for complex real-world environments — exploring intelligent systems across high-impact operational domains."
           />
 
-          <motion.div {...fadeIn} className="mb-16">
+          <motion.div {...fadeIn} className="mb-12">
             <SystemFlowVisual compact />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
             <motion.div {...fadeIn} className="lg:col-span-2">
               <InfrastructureMeshVisual className="min-h-[280px]" />
             </motion.div>
@@ -49,14 +49,14 @@ export default function Themes() {
               className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-center"
             >
               <p className="label-mono mb-3">Domain coverage</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="type-body">
                 Applied AI systems spanning data pipelines, institutional platforms, secure deployment,
                 and operational intelligence across six high-impact domains.
               </p>
             </motion.div>
           </div>
 
-          <div className="space-y-20">
+          <div className="space-y-14">
             {themes.map((theme, themeIdx) => {
               const Icon = theme.icon;
               const related = getProjectsByTheme(theme.id);
@@ -75,10 +75,10 @@ export default function Themes() {
                       <Icon size={22} strokeWidth={1.75} />
                     </div>
                     <div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                      <h2 className="type-subsection-title mb-2">
                         {theme.title}
                       </h2>
-                      <p className="text-muted-foreground leading-relaxed max-w-3xl">
+                      <p className="type-body max-w-3xl">
                         {theme.description}
                       </p>
                     </div>
@@ -93,7 +93,7 @@ export default function Themes() {
                         {theme.problemAreas.map((area) => (
                           <li
                             key={area}
-                            className="flex items-start gap-2 text-sm text-foreground"
+                            className="flex items-start gap-2 text-base text-foreground"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1.5" />
                             {area}
@@ -123,7 +123,7 @@ export default function Themes() {
 
                   <Link
                     href="/projects"
-                    className="text-sm font-semibold text-primary hover:underline"
+                    className="text-base font-semibold text-primary hover:underline"
                   >
                     View all systems in this domain →
                   </Link>

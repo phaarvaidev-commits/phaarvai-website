@@ -25,7 +25,6 @@ const nextConfig: NextConfig = {
     const projectSlugs = [
       "government-services-ai",
       "resilience-resource-optimizer",
-      "x-y",
       "ai-for-cities",
       "climate-intelligence-platform",
       "civic-service-navigator",
@@ -40,6 +39,8 @@ const nextConfig: NextConfig = {
       { source: "/funding-partnerships", destination: "/contact", permanent: true },
       { source: "/partner", destination: "/contact", permanent: true },
       { source: "/insights", destination: "/projects", permanent: false },
+      { source: "/projects/x-y", destination: "/x-y", permanent: true },
+      { source: "/projects/x-y/:path*", destination: "/x-y/:path*", permanent: true },
       ...projectSlugs.map((slug) => ({
         source: `/${slug}`,
         destination: `/projects/${slug}`,

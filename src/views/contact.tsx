@@ -109,7 +109,7 @@ export default function Contact() {
         path="/contact"
       />
 
-      <article className="pt-28 pb-12 bg-background">
+      <article className="page-top bg-background">
         <div className="container mx-auto px-6 md:px-12">
           <PageHeader
             label="Contact"
@@ -127,7 +127,7 @@ export default function Contact() {
                   className="bg-card border border-border rounded-xl p-6 card-hover"
                 >
                   <h3 className="text-base font-bold text-foreground mb-2">{audience.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="type-body">
                     {audience.description}
                   </p>
                 </motion.div>
@@ -141,7 +141,7 @@ export default function Contact() {
                 <h2 className="text-2xl font-bold text-foreground mb-4">{partnerPage.contactCta}</h2>
                 <a
                   href={`mailto:${footer.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail size={14} />
                   {footer.email}

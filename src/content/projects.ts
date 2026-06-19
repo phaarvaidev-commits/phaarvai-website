@@ -70,7 +70,7 @@ export const projects: Project[] = [
       "Integrated manufacturing assistant, marketplace discovery, booking workflows, and provider operations.",
     potentialPartners: ["Manufacturers", "Industrial networks", "Innovation hubs"],
     featured: true,
-    website: "/projects/x-y",
+    website: "/x-y",
   },
   {
     id: "ai-for-cities",
@@ -193,6 +193,10 @@ export function hasProjectLaunchUrl(project: Project): boolean {
 
 export function isExternalProjectUrl(url: string) {
   return url.startsWith("http://") || url.startsWith("https://");
+}
+
+export function isInternalLaunchUrl(url: string) {
+  return url.startsWith("/") && !isExternalProjectUrl(url);
 }
 
 /** Absolute URL for opening demos in a new tab (internal apps resolve against site origin). */

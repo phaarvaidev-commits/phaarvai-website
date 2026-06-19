@@ -76,7 +76,7 @@ function MemberCard({ member, index }: { member: typeof members[0]; index: numbe
           <p className="text-[11px] font-semibold text-primary uppercase tracking-widest">{member.role}</p>
         </div>
 
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{member.bio}</p>
+        <p className="type-card-body mb-4 flex-1">{member.bio}</p>
 
         <div className="flex flex-wrap gap-1.5 mb-4">
           {member.expertise.map((tag) => (
@@ -130,10 +130,10 @@ export default function Team() {
               <p className="text-[10px] font-mono tracking-[0.14em] uppercase text-pink-300/80 mb-3">
                 {hero.label}
               </p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-3">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.1] tracking-tight mb-3">
                 {hero.title}
               </h1>
-              <p className="text-base md:text-lg text-pink-100/75 max-w-lg leading-relaxed">
+              <p className="text-lg md:text-xl text-pink-100/75 max-w-lg leading-relaxed">
                 {hero.subtitle}
               </p>
             </motion.div>
@@ -182,7 +182,7 @@ export default function Team() {
                 </h2>
               </div>
               <div className="lg:col-span-3">
-                <p className="text-sm text-muted-foreground leading-relaxed">{mission.body}</p>
+                <p className="type-body">{mission.body}</p>
               </div>
             </div>
           </motion.section>

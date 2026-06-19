@@ -10,7 +10,7 @@ export function Footer() {
   const { footer } = siteContent;
 
   return (
-    <footer className="bg-foreground text-white pt-16 pb-10">
+    <footer className="bg-foreground text-white pt-14 pb-10">
       <motion.div
         className="container mx-auto px-6 md:px-12"
         initial={{ opacity: 0, y: 12 }}
@@ -26,12 +26,12 @@ export function Footer() {
               className="h-12 w-auto object-contain mb-5 brightness-0 invert opacity-95"
             />
             <p className="text-lg font-semibold text-white mb-2">{footer.tagline}</p>
-            <p className="text-white/60 text-sm leading-relaxed max-w-md mb-5">
+            <p className="text-white/70 text-base leading-relaxed max-w-md mb-5">
               {footer.statement}
             </p>
             <a
               href={`mailto:${footer.email}`}
-              className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-base text-white/70 hover:text-white transition-colors"
             >
               <Mail size={14} />
               {footer.email}
@@ -39,7 +39,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider">
+            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
               Explore
             </h4>
             <ul className="flex flex-col gap-3">
@@ -47,7 +47,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/60 hover:text-white transition-colors flex items-center group text-sm"
+                    className="text-white/65 hover:text-white transition-colors flex items-center group text-base"
                   >
                     {link.label}
                     <ArrowUpRight
@@ -61,7 +61,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-5 text-sm uppercase tracking-wider">
+            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">
               Themes
             </h4>
             <ul className="flex flex-col gap-2.5">

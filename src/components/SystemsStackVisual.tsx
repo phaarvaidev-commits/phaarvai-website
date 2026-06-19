@@ -17,9 +17,9 @@ export function SystemsStackVisual() {
   return (
     <section className="section-y section-alt border-y border-border" aria-label="Systems architecture">
       <div className="container mx-auto px-6 md:px-12">
-        <motion.div {...fadeIn} className="text-center mb-12 max-w-2xl mx-auto">
+        <motion.div {...fadeIn} className="text-center mb-8 md:mb-10 max-w-2xl mx-auto">
           <p className="label-mono mb-3">Infrastructure</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">{systemsStack.title}</h2>
+          <h2 className="type-subsection-title">{systemsStack.title}</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
@@ -35,8 +35,8 @@ export function SystemsStackVisual() {
                   {String(idx + 1).padStart(2, "0")}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold text-foreground">{layer.label}</p>
-                  <p className="text-sm text-muted-foreground">{layer.description}</p>
+                  <p className="text-base font-bold text-foreground">{layer.label}</p>
+                  <p className="type-card-body">{layer.description}</p>
                 </div>
                 <div
                   className="hidden sm:block w-12 h-1 rounded-full bg-gradient-to-r from-primary/60 to-primary/10 shrink-0 animate-pulse-glow"

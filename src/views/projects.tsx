@@ -45,7 +45,7 @@ export default function Projects() {
         path="/projects"
       />
 
-      <article className="pt-28 pb-12 bg-background">
+      <article className="page-top bg-background">
         <div className="container mx-auto px-6 md:px-12">
           <PageHeader
             label="Projects"
@@ -122,7 +122,7 @@ export default function Projects() {
             </div>
           </motion.div>
 
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="type-body mb-6">
             Showing {filtered.length} of {projects.length} systems
           </p>
 

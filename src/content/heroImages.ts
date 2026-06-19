@@ -1,41 +1,60 @@
+export const HERO_IMAGE_STORAGE_KEY = "phaarvai-hero-image-id";
+
 export const heroImageOptions = [
   {
     id: "user-selected",
-    label: "Selected — Waves of Intelligence",
+    label: "Waves of Intelligence",
     description: "Calm AI data waves and neural connections in mild dark + light tones.",
     src: "/images/hero-home.png",
   },
   {
-    id: "option-1",
-    label: "Option 1 — Twilight Teal",
-    description: "Soft dark-to-light teal gradient with neural network glow.",
-    src: "/images/hero-options/option-1-twilight.png",
+    id: "infrastructure",
+    label: "AI Infrastructure",
+    description: "Operational technology and intelligent infrastructure visual.",
+    src: "/images/hero-ai-infrastructure.png",
   },
   {
-    id: "option-2",
-    label: "Option 2 — Slate Mist",
-    description: "Muted slate blue fading into light mist white.",
-    src: "/images/hero-options/option-2-slate-mist.png",
-  },
-  {
-    id: "option-3",
-    label: "Option 3 — Dusk Pearl",
-    description: "Mild navy-teal edges with pearl white center glow.",
-    src: "/images/hero-options/option-3-dusk-pearl.png",
-  },
-  {
-    id: "option-4",
-    label: "Option 4 — Charcoal Ivory",
-    description: "Charcoal and ivory blend with subtle teal accents.",
-    src: "/images/hero-options/option-4-charcoal-ivory.png",
+    id: "prototype",
+    label: "Design prototype",
+    description:
+      "Latest prototype image — replace the file at public/images/hero-prototype.png or set NEXT_PUBLIC_HERO_IMAGE.",
+    src: "/images/hero-prototype.png",
   },
 ] as const;
 
-/** Active hero image id: user-selected | option-1 | option-2 | option-3 | option-4 */
-export const activeHeroImageId = "user-selected";
+export type HeroImageId = (typeof heroImageOptions)[number]["id"];
 
-export function getActiveHeroImage() {
-  return (
-    heroImageOptions.find((o) => o.id === activeHeroImageId) ?? heroImageOptions[2]
-  );
+export interface HeroImageOption {
+  id: HeroImageId | string;
+  label: string;
+  description: string;
+  src: string;
+}
+
+/** Default hero — change this id when a new prototype is approved. */
+export const activeHeroImageId: HeroImageId = "user-selected";
+
+export function getHeroImageById(id: string): HeroImageOption | undefined {
+  return heroImageOptions.find((option) => option.id === id);
+}
+
+/** Resolve hero from env, optional override id (preview / localStorage / ?hero=). */
+export function resolveHeroImage(overrideId?: string | null): HeroImageOption {
+  const customSrc = process.env.NEXT_PUBLIC_HERO_IMAGE?.trim();
+  if (customSrc) {
+    return {
+      id: "user-selected",
+      label: "Custom (env)",
+      description: "Configured via NEXT_PUBLIC_HERO_IMAGE",
+      src: customSrc,
+    };
+  }
+
+  const envId = process.env.NEXT_PUBLIC_HERO_IMAGE_ID?.trim();
+  const id = overrideId ?? envId ?? activeHeroImageId;
+  return getHeroImageById(id) ?? heroImageOptions[0];
+}
+
+export function getActiveHeroImage(): HeroImageOption {
+  return resolveHeroImage();
 }

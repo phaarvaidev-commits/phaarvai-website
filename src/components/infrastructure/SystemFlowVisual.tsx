@@ -20,27 +20,29 @@ export function SystemFlowVisual({ compact = false }: { compact?: boolean }) {
       aria-label="AI system flow"
     >
       <div className="absolute inset-0 bg-dot-grid opacity-20" />
-      <p className="relative text-[10px] font-mono uppercase tracking-widest text-primary mb-4">
+      <p className="relative label-mono mb-4 md:mb-5">
         System flow
       </p>
 
-      <div className="relative flex flex-col md:flex-row md:items-center gap-3 md:gap-2">
+      <div className="relative flex flex-col md:flex-row md:items-stretch gap-3 md:gap-2">
         {stages.map((stage, i) => (
           <div key={stage.id} className="flex md:flex-1 items-center gap-2 min-w-0">
             <motion.div
-              className="flex-1 min-w-0 rounded-xl border border-border bg-background/90 px-3 py-3 card-hover"
+              className={`flex-1 min-w-0 rounded-xl border border-border bg-background/90 card-hover ${
+                compact ? "px-4 py-4" : "px-4 py-4 md:px-5 md:py-5"
+              }`}
               initial={{ opacity: 0, x: -8 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
             >
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] font-mono text-primary/80">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-xs font-bold text-foreground truncate">{stage.label}</span>
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="text-xs font-mono text-primary/80">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm md:text-base font-bold text-foreground truncate">{stage.label}</span>
               </div>
-              <p className="text-[11px] text-muted-foreground truncate">{stage.detail}</p>
+              <p className="text-sm md:text-base text-muted-foreground leading-snug truncate">{stage.detail}</p>
               <motion.div
-                className="mt-2 h-0.5 rounded-full bg-primary/20 overflow-hidden"
+                className="mt-2.5 h-1 rounded-full bg-primary/20 overflow-hidden"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -54,7 +56,7 @@ export function SystemFlowVisual({ compact = false }: { compact?: boolean }) {
 
             {i < stages.length - 1 && (
               <ArrowRight
-                size={compact ? 14 : 16}
+                size={compact ? 18 : 20}
                 className="hidden md:block text-primary/40 shrink-0"
                 aria-hidden
               />

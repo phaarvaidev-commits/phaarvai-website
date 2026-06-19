@@ -1,8 +1,13 @@
+export const XY_BASE_PATH = "/x-y";
+
 export const xyRoutes = {
-  home: "/projects/x-y",
-  browse: "/projects/x-y/browse",
-  assistant: "/projects/x-y/assistant",
-  booking: "/projects/x-y/booking",
-  providerSetup: "/projects/x-y/provider-setup",
+  home: XY_BASE_PATH,
+  browse: `${XY_BASE_PATH}/browse`,
+  assistant: `${XY_BASE_PATH}/assistant`,
+  booking: `${XY_BASE_PATH}/booking`,
+  providerSetup: `${XY_BASE_PATH}/provider-setup`,
 } as const;
 
+export function isXyAppPath(pathname: string): boolean {
+  return pathname === XY_BASE_PATH || pathname.startsWith(`${XY_BASE_PATH}/`);
+}

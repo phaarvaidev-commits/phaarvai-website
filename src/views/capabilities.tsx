@@ -30,7 +30,7 @@ export default function Capabilities() {
         path="/capabilities"
       />
 
-      <article className="pt-28 pb-12 bg-background">
+      <article className="page-top bg-background">
         <motion.div className="container mx-auto px-6 md:px-12">
           <PageHeader
             label="Capabilities"
@@ -64,9 +64,9 @@ export default function Capabilities() {
                       <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                         <Icon size={20} />
                       </div>
-                      <h2 className="text-xl font-bold text-foreground">{cap.title}</h2>
+                      <h2 className="type-card-title">{cap.title}</h2>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="type-card-body">
                       {cap.description}
                     </p>
                   </div>
@@ -77,7 +77,7 @@ export default function Capabilities() {
                         className="flex items-start gap-2.5 bg-card border border-border rounded-xl p-4"
                       >
                         <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground">{item}</span>
+                        <span className="text-base text-foreground">{item}</span>
                       </li>
                     ))}
                   </ul>

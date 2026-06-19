@@ -16,15 +16,11 @@ export function PageHeader({ label, title, description, className }: PageHeaderP
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
-      className={cn("max-w-3xl mb-12 md:mb-16", className)}
+      className={cn("max-w-3xl mb-10 md:mb-12", className)}
     >
       {label && <span className="label-mono mb-3 block">{label}</span>}
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-[1.12]">
-        {title}
-      </h1>
-      {description && (
-        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{description}</p>
-      )}
+      <h1 className="type-page-title mb-4">{title}</h1>
+      {description && <p className="type-page-lead">{description}</p>}
     </motion.header>
   );
 }

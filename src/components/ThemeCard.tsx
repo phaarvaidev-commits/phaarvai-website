@@ -40,20 +40,20 @@ export function ThemeCard({ theme, className, delay = 0, compact = false }: Them
         >
           <Icon size={compact ? 18 : 20} strokeWidth={1.75} />
         </motion.div>
-        <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+        <h3 className="type-card-title text-base md:text-lg group-hover:text-primary transition-colors leading-snug">
           {theme.title}
         </h3>
         <p
           className={cn(
             "text-muted-foreground leading-relaxed flex-grow",
-            compact ? "text-xs mt-2 line-clamp-4" : "text-sm mt-2"
+            compact ? "text-sm md:text-base mt-2 line-clamp-4" : "text-base mt-2"
           )}
         >
           {theme.shortDescription}
         </p>
         {!compact && (
-          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-5 group-hover:gap-2.5 transition-all">
-            Explore theme <ArrowRight size={14} />
+          <span className="inline-flex items-center gap-1.5 text-base font-semibold text-primary mt-5 group-hover:gap-2.5 transition-all">
+            Explore theme <ArrowRight size={15} />
           </span>
         )}
       </Link>

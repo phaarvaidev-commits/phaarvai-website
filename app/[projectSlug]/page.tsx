@@ -1,11 +1,18 @@
 import { notFound, redirect } from "next/navigation";
-import { getProjectBySlug } from "@/content/projects";
+import { getProjectBySlug, getProjectLaunchUrl, isInternalLaunchUrl } from "@/content/projects";
 
 type Params = { projectSlug: string };
 
-/** Legacy root paths like /x-y → /projects/x-y */
-export default function LegacyProjectRedirect({ params }: { params: Params }) {
-  const project = getProjectBySlug(params.projectSlug);
+/** Legacy root paths → project launch URL or /projects/[slug] */
+export default async function LegacyProjectRedirect({ params }: { params: Promise<Params> }) {
+  const { projectSlug } = await params;
+  const project = getProjectBySlug(projectSlug);
   if (!project) notFound();
-  redirect(`/projects/${params.projectSlug}`);
+
+  const launchUrl = getProjectLaunchUrl(project);
+  if (launchUrl && isInternalLaunchUrl(launchUrl)) {
+    redirect(launchUrl);
+  }
+
+  redirect(`/projects/${projectSlug}`);
 }

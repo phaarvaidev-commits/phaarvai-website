@@ -34,12 +34,16 @@ export function Navbar() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const isHome = pathname === "/";
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-border shadow-sm py-2.5"
-          : "bg-white/80 backdrop-blur-sm border-b border-transparent py-3"
+          ? "bg-white/95 backdrop-blur-md border-b border-border shadow-sm py-2"
+          : isHome
+            ? "bg-white/70 backdrop-blur-sm border-b border-transparent py-3.5 md:py-4"
+            : "bg-white/80 backdrop-blur-sm border-b border-transparent py-3"
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
@@ -47,9 +51,17 @@ export function Navbar() {
           <Image
             src="/images/logo-transparent.png"
             alt="Phaarvai"
-            width={260}
-            height={80}
-            className="h-[4.25rem] md:h-[5.75rem] w-auto object-contain"
+            width={320}
+            height={96}
+            className={`w-auto object-contain transition-[height] duration-300 ${
+              isHome
+                ? isScrolled
+                  ? "h-[4.75rem] md:h-[6rem]"
+                  : "h-[5.25rem] md:h-[7rem] lg:h-[7.5rem]"
+                : isScrolled
+                  ? "h-[4.25rem] md:h-[5.5rem]"
+                  : "h-[4.75rem] md:h-[6.25rem]"
+            }`}
             priority
           />
         </Link>
@@ -59,7 +71,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`relative px-4 py-2.5 text-base font-medium rounded-lg transition-colors ${
+              className={`relative px-4 py-2.5 type-nav rounded-lg transition-colors ${
                 isActive(link.href)
                   ? "text-primary bg-primary/8"
                   : "text-foreground/70 hover:text-foreground hover:bg-muted"
@@ -100,7 +112,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-3 rounded-lg text-lg font-medium transition-colors ${
+                  className={`px-3 py-3 rounded-lg type-nav transition-colors ${
                     isActive(link.href)
                       ? "text-primary bg-primary/8"
                       : "text-foreground/80 hover:bg-muted"
